@@ -1,6 +1,9 @@
 * {
   padding: 0;
   margin: 0;
+
+  --time-transition: .25s;
+  --time-type-transition: ease-out;
 }
 
 body {
@@ -35,10 +38,14 @@ button {
   top: 50%;
   left: 50%;
   transform-origin: center;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50vh);
   pointer-events: none;
   opacity: 0%;
   text-align: center;
+
+  transition-property: transform, opacity;
+  transition-duration: var(--time-transition);
+  transition-timing-function: var(--time-type-transition);
 }
 
 .popup-modal p {
@@ -51,11 +58,14 @@ button {
   inset: 0;
   background: #000;
   opacity: 0%;
+
+  transition: opacity var(--time-transition) var(--time-type-transition);
 }
 
 .popup-modal.show {
   opacity: 100%;
   pointer-events: all;
+  transform: translate(-50%, -50%);
 }
 
 .backdrop.show {
